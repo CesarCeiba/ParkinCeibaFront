@@ -1,0 +1,74 @@
+<div class="registro col-lg-6 col-lg-offset-3">
+    
+    <div *ngIf="ingreso; else salida">
+        <div  id = "tipoReg" class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-success" (click)="Ingreso()">Ingresos</button>
+            <button type="button" class="btn btn-default" (click)="Salida()">Salidas</button>
+        </div>
+
+        <form class="form-group">
+            <div class="row">
+                <div class="col-lg-6 form-group">
+                    <label for="tarifa1">Tarifa</label>
+                    <select class="form-control" id="tarifa1" (change)="mostrarDetalle(tarifa.id)">
+                        <option *ngFor="let tarifa of tarifas; let i = index">Tarifa {{tarifa.id}}</option>                       
+                    </select>
+                </div>
+                <div class="col-lg-6 form-group">
+                    <label for="vehiculo1">Tipo Vehiculo</label>
+                    <select class="form-control" id="vehiculo1">
+                        <option>Carro</option>
+                        <option>Moto</option>
+                    </select>
+                </div>
+                <span>{{tarifa.id}}</span>
+            </div>
+            <div class="form-group">
+                <label for="placa1">Placa</label>
+                <input class="form-control" type="text" id="placa1" placeholder="Placa">
+            </div>
+            <div class="form-group">
+                <label>Fecha Ingreso</label>
+                <input class="form-control" type="datetime-local" value="">
+            </div>
+
+            <div class="form-group oculto">
+                <label>Cilindraje</label>
+                <input class="form-control" type="text" placeholder="Ej: 100 CC">
+            </div>
+        </form>
+    </div>
+    
+    <ng-template #salida>
+        <div id = "tipoReg" class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" (click)="Ingreso()">Ingresos</button>
+            <button type="button" class="btn btn-success" (click)="Salida()">Salidas</button>
+        </div>
+
+        <form class="form-group">
+            <div class="form-group">
+                <label for="placa1">Placa</label>
+                <input class="form-control" type="text" id="placa1" placeholder="Placa">
+            </div>
+        </form>
+
+        <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Información de la Salida</div>
+            <table class="table"> 
+                <thead> 
+                    <tr> <th>Tarifa</th> <th>Tipo Vehiculo</th> <th>Ingreso</th> <th>Cilindraje</th> <th>Salir</th> </tr> 
+                </thead> 
+                <tbody> 
+                    <tr> <th scope="row">1</th> <td>Moto</td> <td>2017/08/22</td> <td>500</td> <td><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button></td> </tr>                    
+                </tbody> 
+            </table>
+        </div>
+    </ng-template>  
+
+    
+
+    
+
+    
+</div>

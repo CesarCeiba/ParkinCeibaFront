@@ -1,0 +1,27 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="content" class="col-lg-10 col-lg-offset-1">
+  <header id="header" class="col-lg-12">
+    <h1  class="col-lg-10">
+      Bienvenido a {{title}}            
+    </h1>
+    <span  class="col-lg-2">
+            
+      <button [routerLink]="['/sesion']" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Inicio de Sesión
+        <span class="glyphicon glyphicon-user"></span>
+      </button>
+
+    </span>
+  </header>
+  <nav id="nav" class="col-lg-12">
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a [routerLink]="['/registro']">Registro de vehiculos</a></li>
+      <li><a [routerLink]="['/sesion']">Ver Tarifas</a></li>
+    </ul> 
+  </nav>
+  <section id="main" class="col-lg-12">
+    <router-outlet></router-outlet>
+  </section>
+  <footer class="col-lg-12">Ceiba Parking® 2018 - Cesar Andres Velasquez Martinez</footer>
+</div>

@@ -1,0 +1,18 @@
+<div class="col-lg-3 col-lg-offset-5 sesion">
+    <form>
+        <div class="form-group col-lg-8 col-lg-offset-2">
+            <label>Inicio de Sesión</label>            
+        </div>        
+        <div class="form-group">
+            <label for="username1"  >Usuario</label>
+            <input  class="form-control" type="text" [(ngModel)]="_usuario.username" name="usuario" id = "username1" placeholder="usuario">
+        </div>
+        <div class="form-group">
+            <label for="password1">Contraseña</label>
+            <input class="form-control" type="password" [(ngModel)]="_usuario.password" name="password"  id="password1" placeholder="contraseña">
+        </div>
+        <div class="form-group">
+            <input class="form-control btn btn-success" (click)="login()" type="submit" value="Iniciar sesión">
+        </div>
+    </form>
+</div>

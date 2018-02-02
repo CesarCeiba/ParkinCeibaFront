@@ -1,0 +1,14 @@
+.registro{
+    margin-top:30px;
+    margin-bottom: 30px;
+    box-shadow: 5px;
+    border-radius: 5px; 
+}
+
+#tipoReg{
+    margin-bottom: 20px;
+}
+
+.oculto {
+    visibility: hidden;
+}
