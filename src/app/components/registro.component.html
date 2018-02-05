@@ -7,34 +7,41 @@
         </div>
 
         <form class="form-group">
+
             <div class="row">
+                
                 <div class="col-lg-6 form-group">
                     <label for="tarifa1">Tarifa</label>
-                    <select class="form-control" id="tarifa1" (change)="mostrarDetalle(tarifa.id)">
-                        <option *ngFor="let tarifa of tarifas; let i = index">Tarifa {{tarifa.id}}</option>                       
+                    <select [(ngModel)]="tarifa_seleccionada" class="form-control" id="tarifa1" name="tarifa">
+                        <option></option>
+                        <option *ngFor="let tarifa of tarifas; let i = index">{{tarifa.id}}</option>                       
                     </select>
                 </div>
+
                 <div class="col-lg-6 form-group">
                     <label for="vehiculo1">Tipo Vehiculo</label>
-                    <select class="form-control" id="vehiculo1">
+                    <select [(ngModel)]="tipoVehiculo" class="form-control" id="vehiculo1" (change)="onChangeVehiculo($event)" name="tipo">
                         <option>Carro</option>
                         <option>Moto</option>
                     </select>
-                </div>
-                <span>{{tarifa.id}}</span>
-            </div>
-            <div class="form-group">
-                <label for="placa1">Placa</label>
-                <input class="form-control" type="text" id="placa1" placeholder="Placa">
-            </div>
-            <div class="form-group">
-                <label>Fecha Ingreso</label>
-                <input class="form-control" type="datetime-local" value="">
+                </div>                
+
             </div>
 
-            <div class="form-group oculto">
+            <span>{{tarifa_seleccionada}}</span>
+
+            <div class="form-group">
+                <label for="placa1">Placa</label>
+                <input [(ngModel)]="placa" class="form-control" type="text" id="placa1" name="placa" placeholder="Placa" required>
+            </div>
+
+            <div [ngClass]="ingresoMoto == true ? 'form-group' : 'form-group oculto' " >
                 <label>Cilindraje</label>
-                <input class="form-control" type="text" placeholder="Ej: 100 CC">
+                <input [(ngModel)]="cilindraje" class="form-control" type="text" name="cilindraje" placeholder="Ej: 100 CC">
+            </div>
+
+            <div class="form-group">
+                <button (click)="onSubmit()" class="btn btn-success" type="submit">Guardar</button>
             </div>
         </form>
     </div>
@@ -48,7 +55,7 @@
         <form class="form-group">
             <div class="form-group">
                 <label for="placa1">Placa</label>
-                <input class="form-control" type="text" id="placa1" placeholder="Placa">
+                <input class="form-control" type="text" (input)="onSearchChange($event.target.value)" id="placa1" placeholder="Placa">
             </div>
         </form>
 
@@ -57,10 +64,21 @@
         <div class="panel-heading">Información de la Salida</div>
             <table class="table"> 
                 <thead> 
-                    <tr> <th>Tarifa</th> <th>Tipo Vehiculo</th> <th>Ingreso</th> <th>Cilindraje</th> <th>Salir</th> </tr> 
+                    <tr> <th>Tarifa</th> <th>Placa</th> <th>Tipo</th> <th>Ingreso</th> <th>Cilindraje</th> <th>Salir</th> </tr> 
                 </thead> 
                 <tbody> 
-                    <tr> <th scope="row">1</th> <td>Moto</td> <td>2017/08/22</td> <td>500</td> <td><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button></td> </tr>                    
+                    <tr *ngFor="let auto of autos; let i = index" > 
+                        <th scope="row">{{auto.tarifa.id}}</th> 
+                        <td>{{auto.placa}}</td>
+                        <td>{{auto.tipo}}</td>
+                        <td>{{auto.horaIngreso | date:'yyyy-MM-dd HH:mm':'+0900'}}</td> 
+                        <td>{{auto.cilindraje}}</td>
+                        <td>
+                        <button type="button" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                        </td> 
+                    </tr>                    
                 </tbody> 
             </table>
         </div>
